@@ -221,7 +221,8 @@ Using the dataset with the filled-in missing values (imputed with mean) we now c
 To do so, we first must create a new factor variable in the dataset with two levels – “weekday” and “weekend” indicating whether a given date is a weekday or weekend day.
 
 ```{r factorvar}
-newdata <- cbind (newdata, day="day") # add a new column to newdata
+# add a new column to newdata
+newdata <- cbind (newdata, day="day", stringsAsFactors=FALSE) 
 # populate the new column with "weekend" or "weekday"
 for (i in 1:length(newdata$interval)) {
     if (as.POSIXlt(newdata[i,]$date)$wday == 0 ||
